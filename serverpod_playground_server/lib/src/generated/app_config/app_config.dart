@@ -9,39 +9,48 @@
 // ignore_for_file: use_super_parameters
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'package:serverpod/serverpod.dart' as _i1;
 
-abstract class Example implements _i1.SerializableModel {
-  Example._({
+abstract class AppConfiguration
+    implements _i1.SerializableModel, _i1.ProtocolSerialization {
+  AppConfiguration._({
     required this.name,
-    required this.data,
+    required this.color,
   });
 
-  factory Example({
+  factory AppConfiguration({
     required String name,
-    required int data,
-  }) = _ExampleImpl;
+    required String color,
+  }) = _AppConfigurationImpl;
 
-  factory Example.fromJson(Map<String, dynamic> jsonSerialization) {
-    return Example(
+  factory AppConfiguration.fromJson(Map<String, dynamic> jsonSerialization) {
+    return AppConfiguration(
       name: jsonSerialization['name'] as String,
-      data: jsonSerialization['data'] as int,
+      color: jsonSerialization['color'] as String,
     );
   }
 
   String name;
 
-  int data;
+  String color;
 
-  Example copyWith({
+  AppConfiguration copyWith({
     String? name,
-    int? data,
+    String? color,
   });
   @override
   Map<String, dynamic> toJson() {
     return {
       'name': name,
-      'data': data,
+      'color': color,
+    };
+  }
+
+  @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      'name': name,
+      'color': color,
     };
   }
 
@@ -51,23 +60,23 @@ abstract class Example implements _i1.SerializableModel {
   }
 }
 
-class _ExampleImpl extends Example {
-  _ExampleImpl({
+class _AppConfigurationImpl extends AppConfiguration {
+  _AppConfigurationImpl({
     required String name,
-    required int data,
+    required String color,
   }) : super._(
           name: name,
-          data: data,
+          color: color,
         );
 
   @override
-  Example copyWith({
+  AppConfiguration copyWith({
     String? name,
-    int? data,
+    String? color,
   }) {
-    return Example(
+    return AppConfiguration(
       name: name ?? this.name,
-      data: data ?? this.data,
+      color: color ?? this.color,
     );
   }
 }

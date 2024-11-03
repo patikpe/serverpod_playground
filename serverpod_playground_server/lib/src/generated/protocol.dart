@@ -12,8 +12,10 @@ library protocol; // ignore_for_file: no_leading_underscores_for_library_prefixe
 
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
-import 'example.dart' as _i3;
-export 'example.dart';
+import 'app_config/app_config.dart' as _i3;
+import 'home/main_menu.dart' as _i4;
+export 'app_config/app_config.dart';
+export 'home/main_menu.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
   Protocol._();
@@ -32,11 +34,17 @@ class Protocol extends _i1.SerializationManagerServer {
     Type? t,
   ]) {
     t ??= T;
-    if (t == _i3.Example) {
-      return _i3.Example.fromJson(data) as T;
+    if (t == _i3.AppConfiguration) {
+      return _i3.AppConfiguration.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i3.Example?>()) {
-      return (data != null ? _i3.Example.fromJson(data) : null) as T;
+    if (t == _i4.MainMenu) {
+      return _i4.MainMenu.fromJson(data) as T;
+    }
+    if (t == _i1.getType<_i3.AppConfiguration?>()) {
+      return (data != null ? _i3.AppConfiguration.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i4.MainMenu?>()) {
+      return (data != null ? _i4.MainMenu.fromJson(data) : null) as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -48,8 +56,11 @@ class Protocol extends _i1.SerializationManagerServer {
   String? getClassNameForObject(Object? data) {
     String? className = super.getClassNameForObject(data);
     if (className != null) return className;
-    if (data is _i3.Example) {
-      return 'Example';
+    if (data is _i3.AppConfiguration) {
+      return 'AppConfiguration';
+    }
+    if (data is _i4.MainMenu) {
+      return 'MainMenu';
     }
     className = _i2.Protocol().getClassNameForObject(data);
     if (className != null) {
@@ -60,8 +71,11 @@ class Protocol extends _i1.SerializationManagerServer {
 
   @override
   dynamic deserializeByClassName(Map<String, dynamic> data) {
-    if (data['className'] == 'Example') {
-      return deserialize<_i3.Example>(data['data']);
+    if (data['className'] == 'AppConfiguration') {
+      return deserialize<_i3.AppConfiguration>(data['data']);
+    }
+    if (data['className'] == 'MainMenu') {
+      return deserialize<_i4.MainMenu>(data['data']);
     }
     if (data['className'].startsWith('serverpod.')) {
       data['className'] = data['className'].substring(10);

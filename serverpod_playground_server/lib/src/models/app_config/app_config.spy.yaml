@@ -1,0 +1,4 @@
+class: AppConfiguration
+fields: 
+    name: String
+    color: String
