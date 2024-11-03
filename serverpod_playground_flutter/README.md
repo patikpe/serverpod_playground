@@ -13,3 +13,13 @@ A great starting point for learning Serverpod is our documentation site at:
 To run the project, first make sure that the server is running, then do:
 
     flutter run
+
+
+# Extras
+flutter pub upgrade --major-versions
+
+# Splash Screen
+dart run flutter_native_splash:create
+
+# Stuff
+Splash screen does not work in windows, mac and linux (package design)

@@ -1,0 +1,16 @@
+{
+    "login": "Login",
+    "register": "Register",
+    "reset_password": "Reset Password",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "submit": "Submit",
+    "confirm_password_error": "Passwords do not match",
+    "required_field": "This field is required",
+    "invalid_email": "Please enter a valid email address",
+    "weak_password": "Password must be at least 6 characters long",
+    "email_already_in_use": "Email address is already in use",
+    "error_try_again": "An error occurred. Please try again later",
+    "invalid_credentials": "Invalid email or password"
+}
