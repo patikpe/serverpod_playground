@@ -11,10 +11,10 @@
 library protocol; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'app_config/app_config.dart' as _i2;
-import 'home/main_menu.dart' as _i3;
-export 'app_config/app_config.dart';
-export 'home/main_menu.dart';
+import 'app_configuration/app_configuration_model.dart' as _i2;
+import 'home/main_menu_model.dart' as _i3;
+export 'app_configuration/app_configuration_model.dart';
+export 'home/main_menu_model.dart';
 export 'client.dart';
 
 class Protocol extends _i1.SerializationManager {

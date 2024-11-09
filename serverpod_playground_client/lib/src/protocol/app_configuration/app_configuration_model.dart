@@ -9,46 +9,47 @@
 // ignore_for_file: use_super_parameters
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod/serverpod.dart' as _i1;
+import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-abstract class AppConfiguration
-    implements _i1.SerializableModel, _i1.ProtocolSerialization {
+abstract class AppConfiguration implements _i1.SerializableModel {
   AppConfiguration._({
+    this.id,
     required this.name,
     required this.color,
   });
 
   factory AppConfiguration({
+    int? id,
     required String name,
     required String color,
   }) = _AppConfigurationImpl;
 
   factory AppConfiguration.fromJson(Map<String, dynamic> jsonSerialization) {
     return AppConfiguration(
+      id: jsonSerialization['id'] as int?,
       name: jsonSerialization['name'] as String,
       color: jsonSerialization['color'] as String,
     );
   }
+
+  /// The database id, set if the object has been inserted into the
+  /// database or if it has been fetched from the database. Otherwise,
+  /// the id will be null.
+  int? id;
 
   String name;
 
   String color;
 
   AppConfiguration copyWith({
+    int? id,
     String? name,
     String? color,
   });
   @override
   Map<String, dynamic> toJson() {
     return {
-      'name': name,
-      'color': color,
-    };
-  }
-
-  @override
-  Map<String, dynamic> toJsonForProtocol() {
-    return {
+      if (id != null) 'id': id,
       'name': name,
       'color': color,
     };
@@ -60,21 +61,27 @@ abstract class AppConfiguration
   }
 }
 
+class _Undefined {}
+
 class _AppConfigurationImpl extends AppConfiguration {
   _AppConfigurationImpl({
+    int? id,
     required String name,
     required String color,
   }) : super._(
+          id: id,
           name: name,
           color: color,
         );
 
   @override
   AppConfiguration copyWith({
+    Object? id = _Undefined,
     String? name,
     String? color,
   }) {
     return AppConfiguration(
+      id: id is int? ? id : this.id,
       name: name ?? this.name,
       color: color ?? this.color,
     );

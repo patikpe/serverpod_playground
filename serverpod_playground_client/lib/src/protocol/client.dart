@@ -11,19 +11,30 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
-import 'protocol.dart' as _i3;
+import 'package:serverpod_playground_client/src/protocol/app_configuration/app_configuration_model.dart'
+    as _i3;
+import 'protocol.dart' as _i4;
 
 /// {@category Endpoint}
-class EndpointExample extends _i1.EndpointRef {
-  EndpointExample(_i1.EndpointCaller caller) : super(caller);
+class EndpointAppConfiguration extends _i1.EndpointRef {
+  EndpointAppConfiguration(_i1.EndpointCaller caller) : super(caller);
 
   @override
-  String get name => 'example';
+  String get name => 'appConfiguration';
 
-  _i2.Future<String> hello(String name) => caller.callServerEndpoint<String>(
-        'example',
-        'hello',
-        {'name': name},
+  _i2.Future<_i3.AppConfiguration?> getAppConfiguration() =>
+      caller.callServerEndpoint<_i3.AppConfiguration?>(
+        'appConfiguration',
+        'getAppConfiguration',
+        {},
+      );
+
+  _i2.Future<_i3.AppConfiguration> updateAppConfiguration(
+          _i3.AppConfiguration appConfiguration) =>
+      caller.callServerEndpoint<_i3.AppConfiguration>(
+        'appConfiguration',
+        'updateAppConfiguration',
+        {'appConfiguration': appConfiguration},
       );
 }
 
@@ -43,7 +54,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i3.Protocol(),
+          _i4.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -53,13 +64,14 @@ class Client extends _i1.ServerpodClientShared {
           disconnectStreamsOnLostInternetConnection:
               disconnectStreamsOnLostInternetConnection,
         ) {
-    example = EndpointExample(this);
+    appConfiguration = EndpointAppConfiguration(this);
   }
 
-  late final EndpointExample example;
+  late final EndpointAppConfiguration appConfiguration;
 
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup => {'example': example};
+  Map<String, _i1.EndpointRef> get endpointRefLookup =>
+      {'appConfiguration': appConfiguration};
 
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};

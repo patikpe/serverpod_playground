@@ -1,4 +1,5 @@
 class: AppConfiguration
+table: app_configuration
 fields: 
     name: String
     color: String
