@@ -1,0 +1,5 @@
+class: ServerException
+fields:
+    # code: int
+    message: String
+    type: ServerExceptionType

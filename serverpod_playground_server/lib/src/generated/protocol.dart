@@ -14,8 +14,12 @@ import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
 import 'app_configuration/app_configuration_model.dart' as _i3;
 import 'home/main_menu_model.dart' as _i4;
+import 'server_exception/server_exception.dart' as _i5;
+import 'server_exception/server_exception_enum.dart' as _i6;
 export 'app_configuration/app_configuration_model.dart';
 export 'home/main_menu_model.dart';
+export 'server_exception/server_exception.dart';
+export 'server_exception/server_exception_enum.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
   Protocol._();
@@ -84,11 +88,24 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i4.MainMenu) {
       return _i4.MainMenu.fromJson(data) as T;
     }
+    if (t == _i5.ServerException) {
+      return _i5.ServerException.fromJson(data) as T;
+    }
+    if (t == _i6.ServerExceptionType) {
+      return _i6.ServerExceptionType.fromJson(data) as T;
+    }
     if (t == _i1.getType<_i3.AppConfiguration?>()) {
       return (data != null ? _i3.AppConfiguration.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i4.MainMenu?>()) {
       return (data != null ? _i4.MainMenu.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i5.ServerException?>()) {
+      return (data != null ? _i5.ServerException.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i6.ServerExceptionType?>()) {
+      return (data != null ? _i6.ServerExceptionType.fromJson(data) : null)
+          as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -106,6 +123,12 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i4.MainMenu) {
       return 'MainMenu';
     }
+    if (data is _i5.ServerException) {
+      return 'ServerException';
+    }
+    if (data is _i6.ServerExceptionType) {
+      return 'ServerExceptionType';
+    }
     className = _i2.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod.$className';
@@ -120,6 +143,12 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     if (data['className'] == 'MainMenu') {
       return deserialize<_i4.MainMenu>(data['data']);
+    }
+    if (data['className'] == 'ServerException') {
+      return deserialize<_i5.ServerException>(data['data']);
+    }
+    if (data['className'] == 'ServerExceptionType') {
+      return deserialize<_i6.ServerExceptionType>(data['data']);
     }
     if (data['className'].startsWith('serverpod.')) {
       data['className'] = data['className'].substring(10);
