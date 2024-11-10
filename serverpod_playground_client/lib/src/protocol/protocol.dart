@@ -15,6 +15,7 @@ import 'app_configuration/app_configuration_model.dart' as _i2;
 import 'home/main_menu_model.dart' as _i3;
 import 'server_exception/server_exception.dart' as _i4;
 import 'server_exception/server_exception_enum.dart' as _i5;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i6;
 export 'app_configuration/app_configuration_model.dart';
 export 'home/main_menu_model.dart';
 export 'server_exception/server_exception.dart';
@@ -59,6 +60,9 @@ class Protocol extends _i1.SerializationManager {
       return (data != null ? _i5.ServerExceptionType.fromJson(data) : null)
           as T;
     }
+    try {
+      return _i6.Protocol().deserialize<T>(data, t);
+    } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
 
@@ -78,6 +82,10 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i5.ServerExceptionType) {
       return 'ServerExceptionType';
     }
+    className = _i6.Protocol().getClassNameForObject(data);
+    if (className != null) {
+      return 'serverpod_auth.$className';
+    }
     return null;
   }
 
@@ -94,6 +102,10 @@ class Protocol extends _i1.SerializationManager {
     }
     if (data['className'] == 'ServerExceptionType') {
       return deserialize<_i5.ServerExceptionType>(data['data']);
+    }
+    if (data['className'].startsWith('serverpod_auth.')) {
+      data['className'] = data['className'].substring(15);
+      return _i6.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }
