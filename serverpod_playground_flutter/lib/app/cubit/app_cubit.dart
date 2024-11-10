@@ -12,7 +12,7 @@ class AppCubit extends Cubit<AppState> {
   AppCubit() : super(const AppState());
 
   final _log = Logger('AppCubit');
-
+// test
   void getAppConfig() async {
     try {
       AppConfiguration? test =
