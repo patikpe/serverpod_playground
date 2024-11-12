@@ -1,10 +1,10 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_form_builder/flutter_form_builder.dart';
-// import 'package:flutter_playground/l10n/generated/l10n.dart';
-// import 'package:flutter_playground/modules/login/cubit/login_cubit.dart';
-// import 'package:flutter_playground/utilities/form_values_enum.dart';
 // import 'package:go_router/go_router.dart';
+// import 'package:serverpod_playground_flutter/l10n/generated/l10n.dart';
+// import 'package:serverpod_playground_flutter/modules/login/cubit/login_cubit.dart';
+// import 'package:serverpod_playground_flutter/utilities/form_values_enum.dart';
 
 // class LoginView extends StatelessWidget {
 //   LoginView({super.key});

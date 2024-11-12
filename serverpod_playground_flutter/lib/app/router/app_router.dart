@@ -1,22 +1,19 @@
 import 'package:go_router/go_router.dart';
+import 'package:serverpod_playground_flutter/modules/authentication/view/authentication_view.dart';
 import 'package:serverpod_playground_flutter/modules/home/view/home_view.dart';
 
 class AppRouter {
   static final router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/authentication',
     routes: [
       GoRoute(
-        path: '/',
+        path: '/home',
         builder: (context, state) => const HomeView(),
       ),
-      // GoRoute(
-      //   path: '/login',
-      //   builder: (context, state) => LoginView(),
-      // ),
-      // GoRoute(
-      //   path: '/register',
-      //   builder: (context, state) => RegisterView(),
-      // ),
+      GoRoute(
+        path: '/authentication',
+        builder: (context, state) => AuthenticationView(),
+      ),
     ],
   );
 }
