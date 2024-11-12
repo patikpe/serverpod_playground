@@ -12,12 +12,12 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 
 enum ServerExceptionType implements _i1.SerializableModel {
-  appConfiguration;
+  appConfigurationNotFound;
 
   static ServerExceptionType fromJson(int index) {
     switch (index) {
       case 0:
-        return appConfiguration;
+        return appConfigurationNotFound;
       default:
         throw ArgumentError(
             'Value "$index" cannot be converted to "ServerExceptionType"');

@@ -1,4 +1,4 @@
-class: ServerException
+exception: ServerException
 fields:
     # code: int
     message: String

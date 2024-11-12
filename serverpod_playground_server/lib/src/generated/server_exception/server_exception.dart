@@ -13,7 +13,10 @@ import 'package:serverpod/serverpod.dart' as _i1;
 import '../protocol.dart' as _i2;
 
 abstract class ServerException
-    implements _i1.SerializableModel, _i1.ProtocolSerialization {
+    implements
+        _i1.SerializableException,
+        _i1.SerializableModel,
+        _i1.ProtocolSerialization {
   ServerException._({
     required this.message,
     required this.type,

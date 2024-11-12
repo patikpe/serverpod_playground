@@ -23,8 +23,8 @@ class EndpointAppConfiguration extends _i1.EndpointRef {
   @override
   String get name => 'appConfiguration';
 
-  _i2.Future<_i3.AppConfiguration?> getAppConfiguration() =>
-      caller.callServerEndpoint<_i3.AppConfiguration?>(
+  _i2.Future<_i3.AppConfiguration> getAppConfiguration() =>
+      caller.callServerEndpoint<_i3.AppConfiguration>(
         'appConfiguration',
         'getAppConfiguration',
         {},

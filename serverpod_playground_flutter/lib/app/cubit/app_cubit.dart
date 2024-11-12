@@ -12,13 +12,14 @@ class AppCubit extends Cubit<AppState> {
   AppCubit() : super(const AppState());
 
   final _log = Logger('AppCubit');
-// test
+
   void getAppConfig() async {
     try {
-      AppConfiguration? test =
+      AppConfiguration appConfiguration =
           await client.appConfiguration.getAppConfiguration();
       emit(state.copyWith(
         status: AppStatus.loaded,
+        appName: appConfiguration.name,
       ));
     } catch (e) {
       _log.warning("Could not get AppConfig data, setting default.", e);

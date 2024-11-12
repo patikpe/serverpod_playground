@@ -2,13 +2,23 @@ import 'package:serverpod/serverpod.dart';
 import 'package:serverpod_playground_server/src/generated/protocol.dart';
 
 class AppConfigurationEndpoint extends Endpoint {
-  Future<AppConfiguration?> getAppConfiguration(Session session) async {
+  Future<AppConfiguration> getAppConfiguration(Session session) async {
     try {
-      return await AppConfiguration.db.findFirstRow(session);
+      AppConfiguration? appConfiguration =
+          await AppConfiguration.db.findFirstRow(session);
+      if (appConfiguration == null) {
+        throw (ServerException(
+          message: 'No configuration found use default values!',
+          type: ServerExceptionType.appConfigurationNotFound,
+        ));
+      } else {
+        return appConfiguration;
+      }
     } catch (e) {
       throw (ServerException(
-          message: 'No configuration found use default values!',
-          type: ServerExceptionType.appConfiguration));
+        message: 'Something went wrong!',
+        type: ServerExceptionType.appConfigurationNotFound,
+      ));
     }
   }
 

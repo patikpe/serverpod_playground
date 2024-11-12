@@ -5,11 +5,12 @@ enum AuthenticationStatus {
   loading,
   success,
   error,
-  weakPassword,
-  emailAlreadyInUse,
-  invalidEmail,
-  operationNotAllowed,
+  showLogin,
+  showRegister,
+  showForgotPassword,
 }
+
+// https://docs.serverpod.dev/concepts/authentication/custom-overrides
 
 class AuthenticationState extends Equatable {
   final AuthenticationStatus status;
