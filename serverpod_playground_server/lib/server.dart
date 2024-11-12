@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:serverpod/serverpod.dart';
 
 import 'package:serverpod_playground_server/src/web/routes/root.dart';
@@ -18,6 +20,13 @@ void run(List<String> args) async {
     Endpoints(),
     authenticationHandler: auth.authenticationHandler,
   );
+
+  auth.AuthConfig.set(auth.AuthConfig(
+    sendValidationEmail: (session, email, validationCode) async {
+      print(validationCode);
+      return true;
+    },
+  ));
 
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');

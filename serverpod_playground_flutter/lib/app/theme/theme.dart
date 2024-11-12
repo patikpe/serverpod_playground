@@ -8,14 +8,14 @@ class FPTheme {
         ),
         inputDecorationTheme: const InputDecorationTheme(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
           ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
           minimumSize: WidgetStateProperty.all(const Size(300, 50)),
           shape: const WidgetStatePropertyAll(RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)))),
+              borderRadius: BorderRadius.all(Radius.circular(16)))),
         )),
       );
 
@@ -26,14 +26,14 @@ class FPTheme {
         ),
         inputDecorationTheme: const InputDecorationTheme(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
           ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
           minimumSize: WidgetStateProperty.all(const Size(300, 50)),
           shape: const WidgetStatePropertyAll(RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)))),
+              borderRadius: BorderRadius.all(Radius.circular(16)))),
         )),
       );
 }

@@ -14,7 +14,7 @@ final class AppState extends Equatable {
   const AppState({
     this.status = AppStatus.loading,
     this.appName = 'My Flutter Playground',
-    this.mainColor = Colors.blue,
+    this.mainColor = Colors.green,
   });
 
   AppState copyWith({
