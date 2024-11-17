@@ -13,7 +13,7 @@ final class AppState extends Equatable {
 
   const AppState({
     this.status = AppStatus.loading,
-    this.appName = 'My Flutter Playground',
+    this.appName = 'App Name',
     this.mainColor = Colors.green,
   });
 

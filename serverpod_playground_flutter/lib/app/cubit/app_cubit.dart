@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-
 import 'package:logging/logging.dart';
 import 'package:serverpod_playground_client/serverpod_playground_client.dart';
 import 'package:serverpod_playground_flutter/main.dart';
@@ -20,6 +19,9 @@ class AppCubit extends Cubit<AppState> {
       emit(state.copyWith(
         status: AppStatus.loaded,
         appName: appConfiguration.name,
+        mainColor: Color(
+          int.parse(appConfiguration.color.replaceFirst('#', '0xFF')),
+        ),
       ));
     } catch (e) {
       _log.warning("Could not get AppConfig data, setting default.", e);

@@ -11,14 +11,10 @@ class AppConfigurationEndpoint extends Endpoint {
           message: 'No configuration found use default values!',
           type: ServerExceptionType.appConfigurationNotFound,
         ));
-      } else {
-        return appConfiguration;
       }
+      return appConfiguration;
     } catch (e) {
-      throw (ServerException(
-        message: 'Something went wrong!',
-        type: ServerExceptionType.appConfigurationNotFound,
-      ));
+      rethrow;
     }
   }
 

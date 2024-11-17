@@ -7,6 +7,8 @@ import 'package:serverpod_playground_flutter/app/cubit/app_cubit.dart';
 import 'package:serverpod_playground_flutter/app/router/app_router.dart';
 import 'package:serverpod_playground_flutter/app/theme/theme.dart';
 import 'package:serverpod_playground_flutter/l10n/generated/l10n.dart';
+import 'package:serverpod_playground_flutter/utilities/widgets/error_reload_view.dart';
+import 'package:serverpod_playground_flutter/utilities/widgets/loading_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -23,21 +25,7 @@ class MyApp extends StatelessWidget {
                 context.read<AppCubit>().getAppConfig();
                 FlutterNativeSplash.remove();
               });
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image(
-                    image: AssetImage('assets/splash_screen.png'),
-                    width: 200,
-                    height: 200,
-                  ),
-                  Text(
-                    'Loading...',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              );
+              return LoadingView();
             case AppStatus.loaded:
               return MaterialApp.router(
                 title: state.appName,
@@ -53,22 +41,10 @@ class MyApp extends StatelessWidget {
                 ],
                 supportedLocales: S.delegate.supportedLocales,
               );
+            case AppStatus.error:
+              return ErrorReloadView();
             default:
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image(
-                    image: AssetImage('assets/splash_screen.png'),
-                    width: 200,
-                    height: 200,
-                  ),
-                  Text(
-                    'Loading...',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              );
+              return ErrorReloadView();
           }
         },
       ),
